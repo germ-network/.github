@@ -32,7 +32,7 @@ A family of protocols for [atproto](https://atproto.com) clients.
 
 | Package | What it does | License |
 | --- | --- | --- |
-| [jxl-encoder-swift](https://github.com/germ-network/jxl-encoder-swift) | Pure-Swift lossy JPEG XL encoder (ISO/IEC 18181) — no unsafe constructs, no C dependencies; a port of libjxl-tiny verified byte-identical against it | BSD-3-Clause |
+| [jxl-encoder-swift](https://github.com/germ-network/jxl-encoder-swift) | Pure-Swift lossy JPEG XL encoder (ISO/IEC 18181) — no unsafe constructs, no C dependencies; a port of libjxl | BSD-3-Clause |
 | [oauth4swift](https://github.com/germ-network/oauth4swift) | Building blocks for OAuth 2.1 clients, inspired by [oauth4webapi](https://github.com/panva/oauth4webapi) | MIT |
 
 ## Supporting libraries
