@@ -1,4 +1,4 @@
-We build end-to-end encrypted messaging in Swift, and maintain these libraries:
+We build Germ — an end-to-end encrypted messaging app — using Swift, and maintain these open source libraries:
 
 ## Top-level protocols
 
