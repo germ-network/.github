@@ -1,18 +1,17 @@
-We build end-to-end encrypted messaging in Swift and Rust: MLS-family and
-post-quantum group protocols, the cryptographic primitives underneath them, and the
-AT Protocol client tooling that carries them.
+We build Germ — an end-to-end encrypted messaging app — using Swift, and maintain these open source libraries:
 
-## Swift packages
+## Top-level protocols
 
-### Foundations
+The two main protocols you need to construct Germ's cross-user wire formats:
 
 | Package | What it does | License |
 | --- | --- | --- |
-| [GermConvenience](https://github.com/germ-network/GermConvenience) | Leaf-dependency convenience extensions shared across Germ projects (HTTP, HTTP signatures, CBOR) | MIT |
-| [oauth4swift](https://github.com/germ-network/oauth4swift) | Building blocks for OAuth 2.1 clients, inspired by [oauth4webapi](https://github.com/panva/oauth4webapi) | MIT |
-| [swift-secret-bytes](https://github.com/germ-network/swift-secret-bytes) | Zeroizing custody types for secret bytes, built on swift-crypto's `SymmetricKey` | MIT |
+| [autonomous-comm-protocol](https://github.com/germ-network/autonomous-comm-protocol) | `CommProtocol` — a protocol for autonomous communication between users | MIT |
+| [twomlspq-swift](https://github.com/germ-network/twomlspq-swift) | Swift-native 1:1 triple ratchet (TwoMLSPQ) | Apache-2.0 OR MIT |
 
-### AT Protocol
+## AT Protocol
+
+A family of protocols for [atproto](https://atproto.com) clients.
 
 | Package | What it does | License |
 | --- | --- | --- |
@@ -21,33 +20,30 @@ AT Protocol client tooling that carries them.
 | [AtprotoTypes](https://github.com/germ-network/AtprotoTypes) | Swift types for AT Protocol primitives, with verification and mock variants | MIT |
 | [Microcosm](https://github.com/germ-network/Microcosm) | Client for the AT Protocol services on [microcosm.blue](https://microcosm.blue) | MIT |
 
-### MLS and messaging
+## Spec-driven cryptography libraries
 
 | Package | What it does | License |
 | --- | --- | --- |
-| [autonomous-comm-protocol](https://github.com/germ-network/autonomous-comm-protocol) | `CommProtocol` — a protocol for autonomous communication between users | MIT |
-| [DistributedMLS](https://github.com/germ-network/DistributedMLS) | Prototype Swift implementation of [draft-xue-distributed-mls](https://datatracker.ietf.org/doc/draft-xue-distributed-mls/) | MIT |
-| [swift-mls](https://github.com/germ-network/swift-mls) | A construction kit for MLS-family protocols (RFC 9420), built on swift-crypto | MIT |
-| [swift-raae](https://github.com/germ-network/swift-raae) | Random-access authenticated encryption and the SEAL construction, per `draft-sullivan-cfrg-raae`. Pre-1.0: stored bytes are not yet stable across draft revisions | MIT |
-| [TwoMLSPQ](https://github.com/germ-network/TwoMLSPQ) | Post-quantum implementation of twoMLS. The Swift package is the consumable artifact — one release tag pins one (Swift API, Rust binary) pair via an xcframework URL and checksum | Apache-2.0 OR MIT |
-| [twomlspq-swift](https://github.com/germ-network/twomlspq-swift) | Swift-native 1:1 triple ratchet (TwoMLSPQ) | Apache-2.0 OR MIT |
+| [swift-mls](https://github.com/germ-network/swift-mls) | A construction kit for MLS-family protocols [(RFC 9420)](https://datatracker.ietf.org/doc/rfc9420/), built on swift-crypto | MIT |
+| [swift-raae](https://github.com/germ-network/swift-raae) | Random-access authenticated encryption and the SEAL construction, per [`draft-sullivan-cfrg-raae`](https://datatracker.ietf.org/doc/draft-sullivan-cfrg-raae/03/). Pre-1.0: stored bytes are not yet stable across draft revisions | MIT |
+| [TwoMLSPQ](https://github.com/germ-network/TwoMLSPQ) | A rust implementation of twomlspq. Now superceded by twomlspq-swift, but this was the original implementation that contains the protocol reference. | Apache-2.0 OR MIT |
 
-### Other
+## Other spec libraries
 
 | Package | What it does | License |
 | --- | --- | --- |
-| [jxl-encoder-swift](https://github.com/germ-network/jxl-encoder-swift) | Pure-Swift lossy JPEG XL encoder — no unsafe constructs, no C dependencies; a port of libjxl-tiny verified byte-identical against it | BSD-3-Clause |
-| [verifier-swift](https://github.com/germ-network/verifier-swift) | Tinfoil attestation verifier packaged for Swift | MIT |
+| [jxl-encoder-swift](https://github.com/germ-network/jxl-encoder-swift) | Pure-Swift lossy JPEG XL encoder (ISO/IEC 18181) — no unsafe constructs, no C dependencies; a port of libjxl-tiny verified byte-identical against it | BSD-3-Clause |
+| [oauth4swift](https://github.com/germ-network/oauth4swift) | Building blocks for OAuth 2.1 clients, inspired by [oauth4webapi](https://github.com/panva/oauth4webapi) | MIT |
 
-## Rust packages
-
-| Package | What it does | License |
-| --- | --- | --- |
-| [mls-rs-uniffi](https://github.com/germ-network/mls-rs-uniffi) | UniFFI wrapper over `mls-rs`, built as a `cdylib`/`staticlib` for iOS | MIT |
-| [TwoMLSPQ](https://github.com/germ-network/TwoMLSPQ) | `rust/` workspace behind the TwoMLSPQ Swift package. The crates set `publish = false` and are versioned by the repo's release tags, not independently | Apache-2.0 OR MIT |
-
-## Deprecated
+## Supporting libraries
 
 | Package | What it does | License |
 | --- | --- | --- |
-| [ATProtoLiteClient](https://github.com/germ-network/ATProtoLiteClient) | Lightweight AT Protocol client with OAuth | MIT |
+| [GermConvenience](https://github.com/germ-network/GermConvenience) | Leaf-dependency convenience extensions shared across Germ projects (HTTP, HTTP signatures, CBOR) | MIT |
+| [swift-secret-bytes](https://github.com/germ-network/swift-secret-bytes) | Zeroizing custody types for secret bytes, built around swift-crypto's `SymmetricKey` | MIT |
+
+## In design
+
+| Package | What it does | License |
+| --- | --- | --- |
+| [atproto-pmr](https://github.com/germ-network/atproto-pmr) | Interop specification for the Atproto Personal Messaging Relay — a weakly trusted, persistently online delegate of an atproto DID | MIT |
